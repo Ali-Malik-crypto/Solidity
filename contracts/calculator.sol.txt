@@ -1,0 +1,21 @@
+pragma solidity ^0.7.5;
+
+contract Calculator {
+
+    uint number;
+    uint number1 = 5;
+    uint calculate;
+
+    constructor (uint _number) {
+        _number = _number + number1;
+        _number = _number - number1;
+        _number = _number * number1;
+        _number = _number / number1;
+        calculate = _number;
+    }
+
+    function calculator() view public returns(uint){
+        return calculate;
+    }
+
+}
