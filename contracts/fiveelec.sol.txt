@@ -1,0 +1,16 @@
+pragma solidity ^0.7.3;
+
+contract Mapping {
+
+    address public sender;
+    mapping(address => uint) public balanceof;
+
+    constructor () {
+        sender = msg.sender;
+    }
+
+    function mint(address _address, uint _amount) public {
+        balanceof[_address] += _amount;
+    }
+
+}
