@@ -1,0 +1,15 @@
+pragma solidity ^0.7.5;
+
+contract OnlyAdminAddress {
+
+    address senderAddress;
+
+    constructor(){
+        senderAddress = msg.sender;
+    }
+
+    function getdeployerAccount() public view returns(address){      
+        return senderAddress;
+    }
+
+}
