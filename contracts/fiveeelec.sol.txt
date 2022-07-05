@@ -1,0 +1,17 @@
+pragma solidity ^0.7.3;
+
+contract Mapping {
+
+    mapping(address => uint) public user1;
+
+    function Seebalance(address _address, uint _amount) public{
+        user1[_address] = _amount;
+    }
+
+    mapping(address => uint) public user2;
+
+    function seebalance(address _address, uint _amount) public{
+        user2[_address] = _amount;
+    }
+
+}
