@@ -1,0 +1,19 @@
+pragma solidity ^0.7.3;
+
+contract Arrays {
+
+    uint[] public numbers;
+
+    function addElement(uint num) public {
+        numbers.push(num);
+    }
+
+    function size() public returns(uint) {
+        return numbers.length;
+    }
+
+    function remove(uint index) public {
+        delete numbers[index];
+    }
+ 
+}
