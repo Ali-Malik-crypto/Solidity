@@ -4,8 +4,8 @@ contract Arrays {
 
     uint[] public numbers;
 
-    function addElement(uint _numbers) public {
-        numbers.push(_numbers);
+    function addElement(uint num) public {
+        numbers.push(num);
     }
 
 
