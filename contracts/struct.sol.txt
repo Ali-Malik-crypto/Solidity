@@ -1,0 +1,16 @@
+pragma solidity ^0.7.3;
+
+contract Team {
+
+    Player[] public players;
+    struct Player {
+        string FirstName;
+        string LastName;
+        uint age;
+    }
+
+    function addPlayer(string memory _Firstname, string memory _Lastname, uint _age) public {
+        players.push(Player(_Firstname,_Lastname,_age));
+    }
+
+}
