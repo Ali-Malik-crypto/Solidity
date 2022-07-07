@@ -1,0 +1,12 @@
+pragma solidity ^0.7.3;
+
+contract Arrays {
+
+    uint[] public numbers;
+
+    function addElement(uint _numbers) public {
+        numbers.push(_numbers);
+    }
+
+
+}
