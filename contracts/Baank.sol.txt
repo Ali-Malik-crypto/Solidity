@@ -1,0 +1,22 @@
+pragma solidity ^0.7.3;
+
+contract Bank {
+
+    mapping(address => uint) balance;
+
+    function addBalance(uint add) public {
+        balance[msg.sender] += add;
+    }
+
+    function checkBalance() public view returns(uint){
+        return balance[msg.sender];
+    }
+
+    function transfer(address recipient, uint amount) public {
+        require(balance[msg.sender] >= amount, "You dont have enought balance to send");
+        require(msg.sender != recipient, "You are sender and reciever both so its not possible");
+        balance[msg.sender] -= amount;
+        balance[recipient] += amount;
+    }
+
+}
