@@ -1,0 +1,20 @@
+pragma solidity ^0.7.3;
+
+contract Bank {
+
+    mapping(address => uint) balance;
+
+    function addBalance(uint add) public {
+        balance[msg.sender] += add;
+    }
+
+    function checkBalance() public view returns(uint){
+        return balance[msg.sender];
+    }
+
+    function transfer(address recipient, uint amount) public {
+        balance[msg.sender] -= amount;
+        balance[recipient] += amount;
+    }
+
+}
