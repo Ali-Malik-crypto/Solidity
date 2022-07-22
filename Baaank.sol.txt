@@ -1,0 +1,38 @@
+pragma solidity ^0.7.3;
+
+contract Bank {
+
+    address owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier OnlyOwner {
+        require(owner == msg.sender, "You are not sender");
+        _;
+    }
+
+    mapping(address => uint) balance;
+
+    function addBalance(uint add) public OnlyOwner {
+        balance[msg.sender] += add;
+    }
+
+    function checkBalance() public OnlyOwner view returns(uint){
+        return balance[msg.sender];
+    }
+
+    function transfer(address recipient, uint amount) public OnlyOwner {
+        require(balance[msg.sender] >= amount, "You dont have enought balance to send");
+        require(msg.sender != recipient, "You are sender and reciever both so its not possible");
+
+        uint previousSenderAddress = balance[msg.sender];
+
+        balance[msg.sender] -= amount;
+        balance[recipient] += amount;
+
+        assert(balance[msg.sender] == previousSenderAddress - amount);
+    }
+
+}
