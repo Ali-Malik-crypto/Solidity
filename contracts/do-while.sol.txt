@@ -1,0 +1,17 @@
+pragma solidity ^0.8.1;
+
+contract Property {
+    
+    uint[4] public arr = [5,4,7,8];
+    uint public sum = 0;
+    uint count = 0;
+
+    function loop() public {
+        do{
+            sum = sum + arr[count];
+            count++;
+        }
+        while(count < arr.length);
+    }
+
+}
