@@ -1,0 +1,17 @@
+pragma solidity ^0.8.1;
+
+contract Property {
+    
+    string[] public Programs = ['Java', 'Python', 'Rust'];
+
+    function mem() public view {
+        string[] memory P1 = Programs;    //memory keyword does not changed origanal but make copy then futher changes in copy not in origannal. 
+        P1[0] = 'Javascript';
+    }
+
+    function store() public {
+        string[] storage P1 = Programs;    //storage keyword does not make any copy but make changes in origanal.
+        P1[0] = 'Javascript';
+    }
+
+}
