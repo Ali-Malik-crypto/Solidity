@@ -1,0 +1,21 @@
+pragma solidity ^0.8.2;
+
+abstract contract Parent {
+
+    string public str;
+    address public owner;
+
+    constructor() {
+        str = "Ali";
+        owner = msg.sender;
+    }
+
+    function setter (string memory _str) public virtual;
+}
+
+contract Child is Parent {    // jab kisi dusray contract ko current contract pr inheritance krna ho tou current contract ky nam ky agay is aur dusra contract name likh dye.
+    uint public x;            // child contract parent contract ki value ko access kr skta ha maghar parent contract child contract ki value ko access nhi kr skta. 
+    function setter (string memory _str) public override {
+        str = _str;
+    }
+}
