@@ -1,0 +1,13 @@
+pragma solidity ^0.8.2;
+
+contract demo {
+
+    address balance;
+    function payEther() public payable {
+
+    }
+
+    function checkBalance() public view returns(uint){
+        return address(this).balance;
+    }
+}
