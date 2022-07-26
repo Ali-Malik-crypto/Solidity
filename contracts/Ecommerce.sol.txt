@@ -1,0 +1,49 @@
+pragma solidity ^0.8.2;
+
+contract Ecommerce {
+
+    struct Product {
+        string title;
+        string desc;
+        uint price;
+        address payable seller;
+        uint productId;
+        address buyer;
+        bool delievered;
+    }
+
+    Product[] public product;
+    uint counter = 1;
+
+    event register(string title, uint productId, address seller);
+    event bought(uint productId, address seller);
+    event delievered(uint productId);
+
+    function registerProduct(string memory _title, string memory _desc, uint _price) public {
+        require(_price > 0, "Price should be greator than zero");
+        Product memory temporaryProduct;
+        temporaryProduct.title = _title;
+        temporaryProduct.desc = _desc;
+        temporaryProduct.price = _price * 10**18;
+        temporaryProduct.seller = payable(msg.sender);
+        temporaryProduct.productId = counter;
+        product.push(temporaryProduct);
+        counter++;
+        emit register(_title, temporaryProduct.productId, msg.sender);
+    }
+
+    function buy(uint _productId) payable public {
+        require(product[_productId-1].price == msg.value, "Please pay the exact price");
+        require(product[_productId-1].seller != msg.sender, "Seller cannot be buyer");
+        product[_productId-1].buyer = msg.sender;
+        emit bought(_productId, msg.sender);
+    }
+
+    function delievery(uint _productId) public {
+        require(product[_productId-1].buyer == msg.sender, "Only buyer can confirm it");
+        product[_productId-1].seller.transfer(product[_productId-1].price);
+        product[_productId-1].delievered = true;
+        emit delievered(_productId);
+    }
+    
+}
