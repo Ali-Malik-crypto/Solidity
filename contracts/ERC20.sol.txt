@@ -117,7 +117,7 @@ contract MyERC20 is ERC20_Standard,Owership {
     }
 
     function allowance(address _owner, address _spender) public view override returns (uint256 remaining){
-        return allowed[_owner][_spender];              // msg.sender(owner) ny spender ko ktny token ka access deya ha. Ya function sirf ya chech krta ha.
+        return allowed[_owner][_spender];              // msg.sender(owner) ny spender ko ktny token ka access deya ha. Ya function sirf ya check krta ha.
     }
 
 }
