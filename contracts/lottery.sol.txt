@@ -1,0 +1,49 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >= 0.5.0 < 0.9.0;
+
+contract lottery{
+    address public manager;
+    address payable[] public players;
+
+    constructor()
+    {
+        manager = msg.sender;
+    }
+
+    function alreadyEnter() view private returns(bool){
+        for(uint i=0; i<players.length; i++){
+            if(players[i] == msg.sender)
+            return true;
+        }
+        return false;
+    }
+
+    function enter() public payable{
+        require(manager != msg.sender, "Manager can't call it");
+        require(alreadyEnter() == false, "You Already Entered");   
+        require(msg.value >= 1 ether, "Unsufficient Balance");
+        players.push(payable(msg.sender));
+    }
+
+    function getBalance() public view returns(uint){   
+        require(msg.sender== manager, "Only manager can see it");
+        return address(this).balance;
+    }
+
+    function random() public view returns(uint){
+        return uint(sha256(abi.encodePacked(block.difficulty,block.timestamp,players)));
+    }
+
+    function selectWinner() public{
+        require(msg.sender==manager, "Only manager can select it");
+        uint index = random() % players.length;
+        address contractAddress = address(this);
+        players[index].transfer(contractAddress.balance);
+        players=new address payable[](0);
+    }
+
+    function getPlayers() view public returns(address payable[] memory){
+        return players;
+    }
+}
