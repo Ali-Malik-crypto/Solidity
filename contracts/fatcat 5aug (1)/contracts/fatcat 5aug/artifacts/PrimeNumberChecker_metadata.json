@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "number",
+						"type": "uint256"
+					}
+				],
+				"name": "isPrime",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/fatcat 5aug (1)/contracts/fatcat 5aug/ssa.sol": "PrimeNumberChecker"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/fatcat 5aug (1)/contracts/fatcat 5aug/ssa.sol": {
+			"keccak256": "0x23d4c2eb2fd37046fea174f32f4badc62bb5557ede8141b6ef95a2e5d2e97d42",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1c958205f7f0dc1f88c82dd385d2cafbc58cebd8bac6f60c7cccd049b753cadc",
+				"dweb:/ipfs/QmSmBCuApDnh7K21oJP6pfG7CExkmfhCcUAH5ECNWb5heZ"
+			]
+		}
+	},
+	"version": 1
+}
